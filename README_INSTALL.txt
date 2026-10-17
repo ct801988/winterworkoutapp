@@ -1,13 +1,12 @@
-WINTER STRONG V5.13 — FLOATING REST TIMER
+WINTER STRONG V5.14 — REST TIMER REFINEMENT
 
-Prerequisite: V5.11 mobility code and V5.12 library/images already installed.
+REQUIRES: V5.13 (and prior V5.11 / V5.12) already installed.
 
-1. Export a workout backup in Settings before updating.
-2. Upload app.js, styles.css, sw.js to the GitHub repository ROOT (not exercise-images).
-3. Commit. Do not replace library.js or exercise-images.
-4. Refresh the installed app after GitHub Pages publishes; if cached, close and reopen.
-5. Test Monday: scroll between exercises; expand/collapse timer; start, pause, resume, reset; switch to Progress and back.
+1. Export your workout data in Settings before updating.
+2. Upload app.js, styles.css and sw.js into the ROOT of the existing GitHub repository.
+3. Commit; do not delete or replace library.js, program.js, exercise-images or icons.
+4. Wait for GitHub Pages to publish. Reload the app; a Home Screen app may need to be fully closed/reopened.
+5. Test timer in Monday: 30s, 1m, 2m, 3m, custom seconds (10–900), manual Start, X Stop & Reset, silent/beep, collapsed/expanded and scrolling.
 
-Timer is manual start only. Preset changes reset the countdown. Timer is visible on workout days Mon/Tue/Thu/Fri/Sat, not Wednesday/Sunday or other tabs.
-
-The widget remains anchored above the bottom navigation, not physically inserted into each exercise.
+NOTE: Beep is best-effort when the app is active and iOS allows audio. It is not a background alarm. No auto-start or repeating alarm.
+No changes to workout persistence, program or mobility library.

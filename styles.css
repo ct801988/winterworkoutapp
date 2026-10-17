@@ -146,3 +146,20 @@
 .floating-rest-shell .timer-active{background:#e0f4ee;border-color:#1d9386;color:#0b766c}
 body.has-floating-rest #screen{padding-bottom:calc(135px + env(safe-area-inset-bottom))}
 @media(max-width:390px){#floating-rest{width:calc(100% - 14px)}.floating-rest-shell{padding:8px 10px}.floating-rest-controls{gap:7px}.floating-rest-shell .btn.smallbtn{padding:7px 8px}}
+
+/* V5.14 — compact rest timer; no paused state */
+.floating-rest-shell{padding:7px 10px;border-radius:12px}
+.floating-rest-head{min-height:32px;gap:8px}
+.floating-rest-head strong{font-size:22px}
+.floating-rest-toggle,.floating-rest-stop{min-height:34px;min-width:36px;border-radius:8px;border:0;font-size:22px;cursor:pointer}
+.floating-rest-stop{background:#f2f4f5;color:#344b54}
+.floating-rest-controls{margin-top:6px;padding-top:7px;gap:7px}
+.floating-rest-shell .btn.smallbtn{min-height:36px;padding:6px 9px}
+.floating-rest-custom-label,.floating-rest-alert-label{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#38545f}
+.floating-rest-custom{width:62px;min-height:36px;padding:4px 6px;border:1px solid #b7cecb;border-radius:7px;font-size:14px}
+.floating-rest-alert-label select{min-height:36px;padding:4px 6px;border:1px solid #b7cecb;border-radius:7px;background:white;color:#244552}
+.floating-rest-shell.is-complete{border-color:#4dba88;background:#eaf9f0}
+.floating-rest-shell.is-complete #rest-time{color:#176b43}
+.floating-rest-shell.is-running{border-color:#a9d9d0}
+.floating-rest-shell.is-running #rest-time{color:#1c3646}
+@media(max-width:390px){.floating-rest-shell{padding:6px 8px}.floating-rest-controls{gap:5px}.floating-rest-shell .btn.smallbtn{padding:6px 8px}}

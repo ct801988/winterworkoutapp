@@ -14,7 +14,16 @@ const attr=AM;
 const mondayNow=()=>{const d=new Date(),offset=(d.getDay()+6)%7;d.setDate(d.getDate()-offset);return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');};
 function defaultState(){return {version:1,startDate:mondayNow(),week:1,day:DAY_ORDER[(new Date().getDay()+6)%7],tab:'today',sessions:{},checkins:{},lastBackup:null,advancedRir:false};}
 function load(){try{const raw=localStorage.getItem(STORE);if(!raw)return defaultState();const s=JSON.parse(raw);if(!s||typeof s!=='object'||!s.sessions||!s.checkins||s.version!==1)throw Error('Invalid');return {...defaultState(),...s,week:Math.max(1,Math.min(20,Number(s.week)||1))};}catch(e){return defaultState();}}
-let state=load();let toastId=null;let librarySearch='';let librarySelected=null;let exerciseReturn=null;let infoOpen=false;let travelPreview=null;let restEnd=0;let restPaused=0;let restDuration=120;let restFinished=false;
+let state=load();let toastId=null;let librarySearch='';let librarySelected=null;let exerciseReturn=null;let infoOpen=false;let travelPreview=null;let restEnd=0;let restDuration=120;let restFinished=false;
+const REST_PREF_KEY='winter-strong-rest-prefs-v1';
+let restAlert='silent';
+try{const prefs=JSON.parse(localStorage.getItem(REST_PREF_KEY)||'{}');if(Number.isInteger(prefs.duration)&&prefs.duration>=10&&prefs.duration<=900)restDuration=prefs.duration;if(prefs.alert==='beep')restAlert='beep';}catch(_e){}
+function saveRestPrefs(){try{localStorage.setItem(REST_PREF_KEY,JSON.stringify({duration:restDuration,alert:restAlert}));}catch(_e){}}
+let restAudioContext=null;
+function prepareRestAudio(){if(restAlert!=='beep')return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!restAudioContext)restAudioContext=new AC();if(restAudioContext.state==='suspended')restAudioContext.resume().catch(()=>{});}catch(_e){}}
+function beepRestComplete(){if(restAlert!=='beep'||!restAudioContext||restAudioContext.state!=='running')return;try{const ctx=restAudioContext,now=ctx.currentTime,osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(660,now);gain.gain.setValueAtTime(0.0001,now);gain.gain.exponentialRampToValueAtTime(0.13,now+0.015);gain.gain.exponentialRampToValueAtTime(0.0001,now+0.23);osc.connect(gain);gain.connect(ctx.destination);osc.start(now);osc.stop(now+0.24);}catch(_e){}}
+function stopAndResetRest(){restEnd=0;restFinished=false;restCollapsed=true;updateRestWidget();}
+
 const screen=document.querySelector('#screen');
 const weekData=()=>PROGRAM.weeks[String(state.week)];
 const phaseIndex=w=>Math.floor((w-1)/4);
@@ -35,19 +44,25 @@ let restCollapsed=true;
 function restViewCard(){return '';} // Replaced by the floating widget (kept for older workout templates).
 function restVisible(){return state.tab==='today' && !['wed','sun'].includes(state.day);}
 function restWidget(){
- const remaining=restEnd?Math.max(0,Math.ceil((restEnd-Date.now())/1000)):(restPaused||restDuration);
+ const remaining=restEnd?Math.max(0,Math.ceil((restEnd-Date.now())/1000)):restDuration;
  const label=restFinished?'Done':formatTime(remaining);
- return `<div class="floating-rest-shell ${restCollapsed?'is-collapsed':''}" aria-label="Workout rest timer">
+ const status=restFinished?' is-complete':restEnd?' is-running':'';
+ const presetList=[30,60,120,180];
+ return `<div class="floating-rest-shell ${restCollapsed?'is-collapsed':''}${status}" aria-label="Workout rest timer">
    <div class="floating-rest-head">
      <span class="floating-rest-title">◷ Rest</span>
      <strong id="rest-time" role="timer" aria-label="Rest time remaining">${label}</strong>
+     ${restEnd||restFinished?`<button type="button" class="floating-rest-stop" data-action="timer-stop" aria-label="Stop and reset rest timer" title="Stop and reset">×</button>`:''}
      <button type="button" class="floating-rest-toggle" data-action="timer-toggle" aria-label="${restCollapsed?'Expand':'Collapse'} rest timer" aria-expanded="${!restCollapsed}">${restCollapsed?'⌃':'⌄'}</button>
    </div>
    <div class="floating-rest-controls" ${restCollapsed?'hidden':''}>
-     <div class="floating-rest-presets">${[60,120,180].map(t=>`<button type="button" class="btn smallbtn ${restDuration===t?'timer-active':''}" data-action="timer-preset" data-secs="${t}" aria-pressed="${restDuration===t}">${t/60}m</button>`).join('')}</div>
+     <div class="floating-rest-presets">${presetList.map(t=>`<button type="button" class="btn smallbtn ${restDuration===t?'timer-active':''}" data-action="timer-preset" data-secs="${t}" aria-pressed="${restDuration===t}">${t===30?'30s':t/60+'m'}</button>`).join('')}
+       <label class="floating-rest-custom-label">Custom <input class="floating-rest-custom" type="number" min="10" max="900" step="5" inputmode="numeric" data-action="timer-custom" aria-label="Custom rest seconds" placeholder="sec" value="${presetList.includes(restDuration)?'':restDuration}"></label>
+     </div>
      <div class="floating-rest-actions">
-       <button type="button" class="btn smallbtn primary" data-action="timer-start">${restEnd?'Restart':restPaused?'Resume':'Start'}</button>
-       <button type="button" class="btn smallbtn" data-action="timer-pause">${restEnd?'Pause':'Reset'}</button>
+       <button type="button" class="btn smallbtn primary" data-action="timer-start">${restEnd?'Restart':'Start'}</button>
+       <button type="button" class="btn smallbtn" data-action="timer-stop">× Stop & Reset</button>
+       <label class="floating-rest-alert-label">Alert <select data-action="timer-alert" aria-label="Rest timer completion alert"><option value="silent" ${restAlert==='silent'?'selected':''}>Silent</option><option value="beep" ${restAlert==='beep'?'selected':''}>Beep</option></select></label>
      </div>
    </div>
  </div>`;
@@ -152,11 +167,11 @@ function goCurrentWeek(){const start=new Date(`${state.startDate}T12:00:00`);if(
 function selectWeek(w){travelPreview=null;state.week=Math.max(1,Math.min(20,Number(w)||1));write();render();}
 function showInfo(){if(document.querySelector('#rir-overlay'))return;const el=document.createElement('div');el.id='rir-overlay';el.className='modal-overlay';el.innerHTML=`<div class="info-modal" role="dialog" aria-modal="true" aria-labelledby="rir-heading"><div class="section-head"><h2 id="rir-heading">What is RIR?</h2><button class="btn smallbtn" data-action="rir-close" aria-label="Close explanation">✕</button></div><p><b>RIR = Reps in Reserve.</b> Estimate how many more good-form reps you could have completed <b>after each set</b>.</p><ul><li><b>0:</b> No clean reps left (failure)</li><li><b>1:</b> One more rep possible</li><li><b>2:</b> Two more reps possible</li><li><b>3:</b> Three more reps possible</li><li><b>5+:</b> Five or more possible</li></ul><p class="callout">Example: you completed 8 reps and could have done 10 with good form. Record <b>RIR 2</b> for that set.</p><p class="helper">RIR changes from set to set. Most strength sets should stop short of failure; follow the phase target and never push through pain.</p><button class="btn primary full" data-action="rir-close">Got it</button></div>`;el.addEventListener('click',e=>{if(e.target===el){el.remove();infoOpen=false;}});document.body.appendChild(el);el.querySelector('button')?.focus();}
 function showEffortInfo(){if(document.querySelector('#effort-overlay'))return;const el=document.createElement('div');el.id='effort-overlay';el.className='modal-overlay';el.innerHTML=`<div class="info-modal" role="dialog" aria-modal="true" aria-labelledby="effort-heading"><div class="section-head"><h2 id="effort-heading">What is Effort Level?</h2><button class="btn smallbtn" data-action="effort-close" aria-label="Close effort explanation">✕</button></div><p>Use the <b>1–10 scale</b> to describe how difficult your conditioning workout feels.</p><ul><li><b>1–2:</b> Very easy — relaxed movement</li><li><b>3–4:</b> Easy — comfortable conversation</li><li><b>5–6:</b> Moderate — breathing harder, can speak in sentences</li><li><b>7–8:</b> Hard — can speak only in short phrases</li><li><b>9–10:</b> Very hard to maximum — difficult to sustain</li></ul><p class="callout"><b>Recommended Effort Level</b> is your workout's target. <b>Your Effort Level</b> is how hard it actually felt. Higher isn't automatically better.</p><button class="btn primary full" data-action="effort-close">Got it</button></div>`;el.addEventListener('click',e=>{if(e.target===el)el.remove();});document.body.appendChild(el);el.querySelector('button')?.focus();}
-function refreshRest(){const el=document.querySelector('#rest-time');if(!el)return;const left=restEnd?Math.ceil((restEnd-Date.now())/1000):(restPaused||restDuration);if(restEnd && left<=0){restEnd=0;restPaused=0;restFinished=true;el.textContent='Done';updateRestWidget();toast('Rest complete');return;}el.textContent=restFinished?'Rest finished':formatTime(left);}
+function refreshRest(){if(!restEnd)return;const left=Math.ceil((restEnd-Date.now())/1000);if(left<=0){restEnd=0;restFinished=true;updateRestWidget();beepRestComplete();toast('Rest complete');return;}const el=document.querySelector('#rest-time');if(el)el.textContent=formatTime(left);}
 setInterval(refreshRest,1000);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(infoOpen){infoOpen=false;document.querySelector('#rir-overlay')?.remove();}document.querySelector('#effort-overlay')?.remove();}});
 document.addEventListener('input',event=>{if(event.target.dataset.input==='library-search'){librarySearch=event.target.value;const pos=event.target.selectionStart;render();const inp=document.querySelector('[data-input=library-search]');inp?.focus();inp?.setSelectionRange(pos,pos);return;}if(event.target.matches('[data-input]')&&event.target.dataset.input!=='travel-choice')setValueFromInput(event.target);});
-document.addEventListener('change',event=>{if(event.target.matches('[data-input]')){setValueFromInput(event.target);if(event.target.matches('input[data-part="variant"]')||event.target.dataset.input==='mobility')render();}if(event.target.id==='file-import'){importFile(event.target.files?.[0]);event.target.value='';}});
+document.addEventListener('change',event=>{if(event.target.dataset.action==='timer-alert'){restAlert=event.target.value==='beep'?'beep':'silent';prepareRestAudio();saveRestPrefs();updateRestWidget();return;}if(event.target.dataset.action==='timer-custom'){const n=Number(event.target.value);if(Number.isInteger(n)&&n>=10&&n<=900){restDuration=n;restEnd=0;restFinished=false;saveRestPrefs();updateRestWidget();}else{toast('Choose 10–900 seconds');updateRestWidget();}return;}if(event.target.matches('[data-input]')){setValueFromInput(event.target);if(event.target.matches('input[data-part="variant"]')||event.target.dataset.input==='mobility')render();}if(event.target.id==='file-import'){importFile(event.target.files?.[0]);event.target.value='';}});
 document.addEventListener('click',event=>{const b=event.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;
  if(a==='tab'){state.tab=b.dataset.tab;travelPreview=null;if(state.tab==='visuals')librarySelected=null;write();render();window.scrollTo(0,0);}
  else if(a==='show-exercise'){
@@ -193,9 +208,9 @@ document.addEventListener('click',event=>{const b=event.target.closest('[data-ac
  else if(a==='rir-info'){infoOpen=true;showInfo();}
  else if(a==='rir-close'){infoOpen=false;document.querySelector('#rir-overlay')?.remove();}
  else if(a==='timer-toggle'){restCollapsed=!restCollapsed;updateRestWidget();}
- else if(a==='timer-preset'){restDuration=Number(b.dataset.secs);restPaused=0;restEnd=0;restFinished=false;updateRestWidget();}
- else if(a==='timer-start'){restEnd=Date.now()+1000*(restPaused||restDuration);restPaused=0;restFinished=false;updateRestWidget();}
- else if(a==='timer-pause'){if(restEnd){restPaused=Math.max(0,Math.ceil((restEnd-Date.now())/1000));restEnd=0;}else{restPaused=0;restFinished=false;}updateRestWidget();}
+ else if(a==='timer-preset'){restDuration=Number(b.dataset.secs);restEnd=0;restFinished=false;saveRestPrefs();updateRestWidget();}
+ else if(a==='timer-start'){prepareRestAudio();restEnd=Date.now()+1000*restDuration;restFinished=false;updateRestWidget();}
+ else if(a==='timer-stop'){stopAndResetRest();}
  else if(a==='travel-edit'){const s=getSession(state.week,state.day);travelPreview={profile:s.travel?.profile||'hotelroom',minutes:s.travel?.minutes||30};render();}
  else if(a==='travel-cancel'){travelPreview=null;render();}
  else if(a==='travel-accept'){const d=state.day,ss=getSession(state.week,d),choice=travelPreview;if(!choice)return;const exs=V5.travelPlan(choice.profile,d,choice.minutes,weekData().days[d]||[]);if(!exs.length)return toast('No substitute available for this day');if(ss.travel?.active&&Object.values(ss.travel.entries||{}).some(e=>(e.sets||[]).some(V5.hasLogged))&&!confirm('Change this workout? Your previous modified sets will be preserved in the session archive.'))return;if(ss.travel?.active){ss.travelHistory ||= [];if(Object.values(ss.travel.entries||{}).some(e=>(e.sets||[]).some(V5.hasLogged)))ss.travelHistory.push({...ss.travel,archivedAt:new Date().toISOString()});}if(ss.travel&&!ss.travel.active&&ss.travel.profile===choice.profile&&ss.travel.minutes===choice.minutes){ss.travel.active=true;}else{ss.travel={...choice,active:true,exercises:exs,entries:{}};}ss.completed=false;ss.completedAt=null;travelPreview=null;write();render();toast('Modified workout ready');}
