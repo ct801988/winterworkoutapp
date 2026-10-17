@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101c2d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Winter Strong" />
+  <meta name="description" content="Your complete offline 20-week progressive strength and physique tracker." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Winter Strong — Workout Tracker</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="logo"><span class="mark">W<span class="mark-accent">.</span></span></div>
+      <div class="brand"><span>WINTER STRONG</span><small>20-week training system</small></div>
+      <button class="header-action" data-action="tab" data-tab="settings" aria-label="Settings">⚙</button>
+    </header>
+    <main id="screen" aria-live="polite"></main>
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button data-action="tab" data-tab="today" class="nav-item active"><span class="nav-ico">▦</span><span>Workout</span></button>
+      <button data-action="tab" data-tab="plan" class="nav-item"><span class="nav-ico">▤</span><span>Program</span></button>
+      <button data-action="tab" data-tab="progress" class="nav-item"><span class="nav-ico">▥</span><span>Progress</span></button>
+      <button data-action="tab" data-tab="settings" class="nav-item"><span class="nav-ico">⚙</span><span>Settings</span></button>
+    </nav>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="program.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+WINTER STRONG — INSTALL ON YOUR IPHONE
+
+This is a standalone Home Screen web app (PWA), not an App Store release.
+
+1. Unzip the WinterStrong_iPhone_App_Source.zip file on a laptop or desktop.
+2. Sign in at github.com. Create a NEW PUBLIC REPOSITORY, e.g., winter-strong.
+3. In the new repo choose Add file > Upload files. Upload all the files from the unzipped app, including the icons folder. Commit to main.
+4. Go to repo Settings > Pages > Build and deployment > Deploy from a branch.
+5. Choose branch main, folder /(root), then Save.
+6. Open the published URL, usually https://YOUR-USERNAME.github.io/winter-strong/, in Safari on the iPhone.
+7. Tap Share > Add to Home Screen > Add. Launch from the Home Screen.
+8. Log a trial set. The app saves sets locally. In app Settings, tap Export backup and save a JSON copy to Files/iCloud Drive.
+9. Once loaded online, the app is designed to function offline after installation.
+
+NO AUTO SYNC: Entries are stored on your phone, not GitHub, and do not synchronize between devices. Export a backup at least every few weeks.
+
+REMEMBER: Do not upload any personal backup JSON files to your PUBLIC repo. Only upload the app code and icon files.
+
+For complete setup and development details, read README.md.
