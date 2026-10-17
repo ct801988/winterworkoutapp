@@ -1,13 +1,17 @@
-Winter Strong V5.2 — Return to the same exercise
+WINTER STRONG V5.3 — EFFORT LEVEL UPDATE
 
-This small change preserves the original V5.1 exercise thumbnails and existing V5 features.
+Upload app.js and sw.js to the ROOT of your existing GitHub repository.
+Do not upload README.md, and do not delete any other files.
 
-Upload ONLY app.js and sw.js to the ROOT of your existing GitHub repository; overwrite the older versions. Do not delete any files.
+Includes V5.2 return-to-exercise fix.
 
-What changed:
-- Opening a photo reference from the Workout tab remembers the current week, day, exercise index, and scroll position.
-- Return to workout brings you back to the exercise you were on instead of the top.
-- Browsing the Visuals library normally still works.
-- No workout history schema changes and no extra images required.
+What's new:
+- Replaces the confusing “Conditioning effort · RPE 1–10” label with Recommended Effort Level and Your Effort Level.
+- Adds a simple 1–10 explanation popup with an info icon.
+- Shows a recommended effort range and plain-language guidance based on week, day and activity choice. Recovery/benchmark weeks have easier targets.
+- Saves actual effort to the existing rpe field for full compatibility with old workout data and backups.
+- Updates service worker cache version so new app files can be fetched.
 
-As always, export a backup in Settings before deploying app code changes. After deployment, reopen the app and allow its offline cache to refresh.
+IMPORTANT: Export a backup from Settings before upgrading. Existing stored workouts should be preserved, but backups are prudent.
+
+NOTE: Code syntax is checked, but live iPhone testing has not been performed.
