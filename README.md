@@ -1,17 +1,19 @@
-WINTER STRONG V5.3 — EFFORT LEVEL UPDATE
+WINTER STRONG V5.4 — SIMPLIFIED STRENGTH LOGGING
 
-Upload app.js and sw.js to the ROOT of your existing GitHub repository.
-Do not upload README.md, and do not delete any other files.
+Upload these FOUR files to the ROOT of your existing GitHub repository:
+- app.js
+- v5-engine.js
+- styles.css
+- sw.js
 
-Includes V5.2 return-to-exercise fix.
+Do not upload this README. Do not delete any other app files or exercise images.
 
-What's new:
-- Replaces the confusing “Conditioning effort · RPE 1–10” label with Recommended Effort Level and Your Effort Level.
-- Adds a simple 1–10 explanation popup with an info icon.
-- Shows a recommended effort range and plain-language guidance based on week, day and activity choice. Recovery/benchmark weeks have easier targets.
-- Saves actual effort to the existing rpe field for full compatibility with old workout data and backups.
-- Updates service worker cache version so new app files can be fetched.
+Changes:
+- Strength workout sets show Set / Weight / Reps (or Seconds) by default, without RIR.
+- Optional Settings > Advanced strength tracking toggle restores the RIR column for advanced users. Default OFF.
+- Automatic progressive-overload recommendations now use completed sets, weight and reps; no RIR required.
+- Historical RIR entries remain in local storage and in backup/CSV exports.
+- Existing V5.3 conditioning Effort Level and V5.2 return-to-exercise fixes remain included.
+- Service worker cache updated.
 
-IMPORTANT: Export a backup from Settings before upgrading. Existing stored workouts should be preserved, but backups are prudent.
-
-NOTE: Code syntax is checked, but live iPhone testing has not been performed.
+IMPORTANT: Export a backup in Settings before uploading. GitHub Pages deployment and iPhone behavior have not been verified live.

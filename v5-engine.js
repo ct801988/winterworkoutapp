@@ -10,7 +10,7 @@ function prescribe(ex,week,prior,readiness,weekData){
  const isTime=ex.unit==='sec'; const targetRir=rirTarget(weekData);
  const recovery=isRecovery(week),benchmark=week===20;
  const low=Number(ex.low),high=Number(ex.high),n=Number(ex.sets);
- let weight='', targets=Array(n).fill(low), reason='First time logging this exercise. Choose a comfortable load and establish a baseline; stop with the prescribed reps in reserve.',status='baseline';
+ let weight='', targets=Array(n).fill(low), reason='First time logging this exercise. Choose a manageable load and establish a baseline with controlled technique.',status='baseline';
  if(prior){
    const ps=(prior.sets||[]).filter(hasLogged);
    const raw=ps.map(x=>String(x.weight||'BW').trim()||'BW');
@@ -19,23 +19,18 @@ function prescribe(ex,week,prior,readiness,weekData){
    const completed=ps.length>=Number(prior.ex.sets);
    const rp=ps.map(s=>Number(s.reps));
    const allTop=completed && rp.every(r=>r>=Number(prior.ex.high));
-   const rirs=ps.map(s=>s.rir===''||s.rir==null?null:Number(s.rir));
-   const rirKnown=rirs.length>0&&rirs.every(r=>r!==null&&Number.isFinite(r));
    const recoveryPrior=isRecovery(Number(prior.wi));
    const oldGoal=String(prior.e?.goal||'');
-   const priorAtTarget=rirKnown && rirs.every(r=>r>=targetRir);
    if(recovery){status='recovery';reason='Recovery week: use a comfortable load with extra reps in reserve. No automatic increase.';}
    else if(benchmark){status='benchmark';reason='Week 20 benchmark: compare clean, controlled work. This is not a one-rep max test.';}
    else if(readiness==='pain'){status='hold';reason='Pain or a flare-up reported: do not chase progression. Stop aggravating movements and choose a pain-free alternative; seek clinical advice for ongoing symptoms.';}
    else if(readiness==='fatigued'){status='hold';reason='Fatigued today: keep the load conservative. Reduce volume or effort as needed.';}
    else if(!completed){status='repeat';reason='Your last session had missing sets. Repeat the load and work toward completing the planned sets.';}
    else if(!same){status='repeat';reason='Previous weights were mixed. Start with the first working-set load and adjust to keep technique solid.';}
-   else if(!rirKnown){status='repeat';reason='Prior RIR was not recorded for every set. Hold the weight; log RIR for each set before an automatic load increase.';}
-   else if(rirs.some(r=>r<1)){status='repeat';reason='A set was at or near failure. Keep load and improve reserve before progressing.';}
-   else if(allTop && priorAtTarget && !isTime && /^\d+(?:\.\d+)?$/.test(weight) && !recoveryPrior){
-      const inc=jump(ex.name);weight=String(Number(weight)+inc);status='increase';reason=`All previous sets met the upper rep target with sufficient RIR. Suggested +${inc} lb. Use the closest safe weight you have.`;
+   else if(allTop && !isTime && /^\d+(?:\.\d+)?$/.test(weight) && !recoveryPrior){
+      const inc=jump(ex.name);weight=String(Number(weight)+inc);status='increase';reason=`All planned sets reached the top of the rep range at a consistent load. Suggested +${inc} lb. Increase only if technique stayed controlled and the jump feels manageable.`;
    }
-   else if(allTop){status='hold';reason='Rep ceiling reached. Hold the load until effort and all progression checks support an increase.';}
+   else if(allTop){status='hold';reason='Rep ceiling reached. Hold the load for time-based work or after a recovery week; progress conservatively.';}
    else {status='reps';reason='Keep the load and aim to add a clean rep where you fell short, staying within the current phase rep range.';}
    if(status==='increase')targets=Array(n).fill(low);
    else if(status==='reps'||status==='repeat')targets=Array.from({length:n},(_,i)=>Math.max(low,Math.min(high,Number(ps[Math.min(i,ps.length-1)]?.reps||low)+(status==='reps'?1:0))));
