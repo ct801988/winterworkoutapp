@@ -59,3 +59,10 @@
 .topbar .logo{background:#0d1318;display:flex;align-items:center;justify-content:center;padding:0;line-height:0}
 .topbar .logo img{width:100%;height:100%;object-fit:contain;object-position:center center}
 .topbar .brand{min-width:0}
+
+/* V5.8: Give the detailed Winter Strong icon room to display fully in the header. */
+.topbar{min-height:88px;gap:12px;padding:calc(env(safe-area-inset-top) + 10px) 16px 12px}
+.topbar .logo{width:60px;height:60px;min-width:60px;flex:0 0 60px;border-radius:12px;overflow:hidden;background:#0d1318;padding:0;display:flex;align-items:center;justify-content:center}
+.topbar .logo img{display:block;width:60px;height:60px;max-width:100%;max-height:100%;object-fit:contain;object-position:center;border-radius:12px}
+.topbar .brand{min-width:0;flex:1}
+@media(max-width:350px){.topbar .logo{width:54px;height:54px;min-width:54px;flex-basis:54px}.topbar .logo img{width:54px;height:54px}.topbar{gap:9px;padding-left:12px;padding-right:12px}}
