@@ -25,12 +25,41 @@ function getEntry(w,d,i,name,create=true){const s=getSession(w,d,create);if(!s)r
 function write(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(err){toast('Storage is full/unavailable — export a backup');}}
 function toast(message){const el=document.querySelector('#toast');el.textContent=message;el.classList.add('visible');clearTimeout(toastId);toastId=setTimeout(()=>el.classList.remove('visible'),2500);}
 function updateNav(){document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active',n.dataset.tab===state.tab));}
-function render(){updateNav();screen.innerHTML=state.tab==='today'?today():state.tab==='plan'?plan():state.tab==='progress'?progress():state.tab==='visuals'?visuals():settings();}
+function render(){updateNav();screen.innerHTML=state.tab==='today'?today():state.tab==='plan'?plan():state.tab==='progress'?progress():state.tab==='visuals'?visuals():settings();updateRestWidget();}
 function weekHeader(){const w=weekData(),ph=phase(state.week);return `<section class="hero"><div class="hero-head"><div><div class="eyebrow">PHASE ${String(phaseIndex(state.week)+1).padStart(2,'0')} · ${AM(ph.title)}</div><h1>Week ${String(state.week).padStart(2,'0')} <span style="color:#9fe0d6">/ 20</span></h1><p class="hero-sub">${AM(ph.focus)}</p></div><div class="week-controls"><button aria-label="Previous week" data-action="week" data-step="-1" ${state.week===1?'disabled':''}>‹</button><span class="week-count">${String(state.week).padStart(2,'0')}</span><button aria-label="Next week" data-action="week" data-step="1" ${state.week===20?'disabled':''}>›</button></div></div><div class="hero-foot"><span class="pill">${AM(w.theme)}</span><span class="pill">${state.advancedRir?`Target ${AM(w.rir)}`:'Train with control'}</span></div><div class="phase-track"><div style="width:${state.week*5}%"></div></div></section><div class="week-directive"><strong>YOUR WEEKLY ASSIGNMENT</strong>${AM(w.directive)}</div>`;}
 function dayPicker(){return `<div class="section"><div class="section-head"><h2>Choose your day</h2><span class="muted small">Saved automatically</span></div><div class="day-scroll">${DAY_ORDER.map(d=>{const s=getSession(state.week,d,false);return `<button class="day-button ${state.day===d?'active':''} ${s?.completed?'done':''}" data-action="day" data-day="${d}"><b>${FULL[d].slice(0,3)}</b><span>${d==='wed'?'Move':d==='sat'?'Core':d==='sun'?'Rest':LIFT_DAYS.includes(d)?'Lift':''}</span><i class="dot"></i></button>`;}).join('')}</div></div>`;}
 function activeExercises(w,d){const ss=getSession(w,d,false);return ss?.travel?.active?ss.travel.exercises:(PROGRAM.weeks[String(w)].days[d]||[]);}
 function loggedSets(entries,exercises){return exercises.reduce((acc,ex,i)=>acc+(entries?.[i]?.sets||[]).slice(0,ex.sets).filter(V5.hasLogged).length,0);}
-function restViewCard(){return `<div class="panel rest-timer" style="margin-bottom:12px"><div class="section-head"><h3>Rest timer</h3><span class="muted small">Optional · between sets</span></div><div class="timer-inner"><strong id="rest-time" role="timer" aria-label="Rest time remaining">${restFinished?'Rest finished':formatTime(restEnd?Math.ceil((restEnd-Date.now())/1000):restPaused||restDuration)}</strong><div class="timer-choices">${[60,120,180].map(t=>`<button class="btn smallbtn ${restDuration===t?'timer-active':''}" data-action="timer-preset" data-secs="${t}">${t/60} min</button>`).join('')}</div></div><div class="actions"><button class="btn smallbtn primary" data-action="timer-start">${restEnd?'Restart':restPaused?'Resume rest':'Start rest'}</button><button class="btn smallbtn" data-action="timer-pause">${restEnd?'Pause':'Reset'}</button></div><p class="helper">Timer uses clock time and may not make a sound if your phone sleeps.</p></div>`;}
+// The floating timer is a single persistent widget outside #screen.
+let restCollapsed=true;
+function restViewCard(){return '';} // Replaced by the floating widget (kept for older workout templates).
+function restVisible(){return state.tab==='today' && !['wed','sun'].includes(state.day);}
+function restWidget(){
+ const remaining=restEnd?Math.max(0,Math.ceil((restEnd-Date.now())/1000)):(restPaused||restDuration);
+ const label=restFinished?'Done':formatTime(remaining);
+ return `<div class="floating-rest-shell ${restCollapsed?'is-collapsed':''}" aria-label="Workout rest timer">
+   <div class="floating-rest-head">
+     <span class="floating-rest-title">◷ Rest</span>
+     <strong id="rest-time" role="timer" aria-label="Rest time remaining">${label}</strong>
+     <button type="button" class="floating-rest-toggle" data-action="timer-toggle" aria-label="${restCollapsed?'Expand':'Collapse'} rest timer" aria-expanded="${!restCollapsed}">${restCollapsed?'⌃':'⌄'}</button>
+   </div>
+   <div class="floating-rest-controls" ${restCollapsed?'hidden':''}>
+     <div class="floating-rest-presets">${[60,120,180].map(t=>`<button type="button" class="btn smallbtn ${restDuration===t?'timer-active':''}" data-action="timer-preset" data-secs="${t}" aria-pressed="${restDuration===t}">${t/60}m</button>`).join('')}</div>
+     <div class="floating-rest-actions">
+       <button type="button" class="btn smallbtn primary" data-action="timer-start">${restEnd?'Restart':restPaused?'Resume':'Start'}</button>
+       <button type="button" class="btn smallbtn" data-action="timer-pause">${restEnd?'Pause':'Reset'}</button>
+     </div>
+   </div>
+ </div>`;
+}
+function updateRestWidget(){
+ let host=document.querySelector('#floating-rest');
+ if(!host){host=document.createElement('aside');host.id='floating-rest';document.querySelector('#app').appendChild(host);}
+ const visible=restVisible();host.hidden=!visible;
+ if(visible){host.innerHTML=restWidget();document.body.classList.add('has-floating-rest');}
+ else document.body.classList.remove('has-floating-rest');
+}
+
 function formatTime(sec){const t=Math.max(0,Number(sec)||0);return `${Math.floor(t/60).toString().padStart(2,'0')}:${Math.floor(t%60).toString().padStart(2,'0')}`;}
 function travelControls(w,d,s){if(!['mon','tue','thu','fri','sat'].includes(d))return '';
  const t=s.travel;
@@ -123,7 +152,7 @@ function goCurrentWeek(){const start=new Date(`${state.startDate}T12:00:00`);if(
 function selectWeek(w){travelPreview=null;state.week=Math.max(1,Math.min(20,Number(w)||1));write();render();}
 function showInfo(){if(document.querySelector('#rir-overlay'))return;const el=document.createElement('div');el.id='rir-overlay';el.className='modal-overlay';el.innerHTML=`<div class="info-modal" role="dialog" aria-modal="true" aria-labelledby="rir-heading"><div class="section-head"><h2 id="rir-heading">What is RIR?</h2><button class="btn smallbtn" data-action="rir-close" aria-label="Close explanation">✕</button></div><p><b>RIR = Reps in Reserve.</b> Estimate how many more good-form reps you could have completed <b>after each set</b>.</p><ul><li><b>0:</b> No clean reps left (failure)</li><li><b>1:</b> One more rep possible</li><li><b>2:</b> Two more reps possible</li><li><b>3:</b> Three more reps possible</li><li><b>5+:</b> Five or more possible</li></ul><p class="callout">Example: you completed 8 reps and could have done 10 with good form. Record <b>RIR 2</b> for that set.</p><p class="helper">RIR changes from set to set. Most strength sets should stop short of failure; follow the phase target and never push through pain.</p><button class="btn primary full" data-action="rir-close">Got it</button></div>`;el.addEventListener('click',e=>{if(e.target===el){el.remove();infoOpen=false;}});document.body.appendChild(el);el.querySelector('button')?.focus();}
 function showEffortInfo(){if(document.querySelector('#effort-overlay'))return;const el=document.createElement('div');el.id='effort-overlay';el.className='modal-overlay';el.innerHTML=`<div class="info-modal" role="dialog" aria-modal="true" aria-labelledby="effort-heading"><div class="section-head"><h2 id="effort-heading">What is Effort Level?</h2><button class="btn smallbtn" data-action="effort-close" aria-label="Close effort explanation">✕</button></div><p>Use the <b>1–10 scale</b> to describe how difficult your conditioning workout feels.</p><ul><li><b>1–2:</b> Very easy — relaxed movement</li><li><b>3–4:</b> Easy — comfortable conversation</li><li><b>5–6:</b> Moderate — breathing harder, can speak in sentences</li><li><b>7–8:</b> Hard — can speak only in short phrases</li><li><b>9–10:</b> Very hard to maximum — difficult to sustain</li></ul><p class="callout"><b>Recommended Effort Level</b> is your workout's target. <b>Your Effort Level</b> is how hard it actually felt. Higher isn't automatically better.</p><button class="btn primary full" data-action="effort-close">Got it</button></div>`;el.addEventListener('click',e=>{if(e.target===el)el.remove();});document.body.appendChild(el);el.querySelector('button')?.focus();}
-function refreshRest(){const el=document.querySelector('#rest-time');if(!el)return;const left=restEnd?Math.ceil((restEnd-Date.now())/1000):(restPaused||restDuration);if(restEnd && left<=0){restEnd=0;restPaused=0;restFinished=true;el.textContent='Rest finished';toast('Rest complete');return;}el.textContent=restFinished?'Rest finished':formatTime(left);}
+function refreshRest(){const el=document.querySelector('#rest-time');if(!el)return;const left=restEnd?Math.ceil((restEnd-Date.now())/1000):(restPaused||restDuration);if(restEnd && left<=0){restEnd=0;restPaused=0;restFinished=true;el.textContent='Done';updateRestWidget();toast('Rest complete');return;}el.textContent=restFinished?'Rest finished':formatTime(left);}
 setInterval(refreshRest,1000);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(infoOpen){infoOpen=false;document.querySelector('#rir-overlay')?.remove();}document.querySelector('#effort-overlay')?.remove();}});
 document.addEventListener('input',event=>{if(event.target.dataset.input==='library-search'){librarySearch=event.target.value;const pos=event.target.selectionStart;render();const inp=document.querySelector('[data-input=library-search]');inp?.focus();inp?.setSelectionRange(pos,pos);return;}if(event.target.matches('[data-input]')&&event.target.dataset.input!=='travel-choice')setValueFromInput(event.target);});
@@ -163,9 +192,10 @@ document.addEventListener('click',event=>{const b=event.target.closest('[data-ac
  else if(a==='effort-close'){document.querySelector('#effort-overlay')?.remove();}
  else if(a==='rir-info'){infoOpen=true;showInfo();}
  else if(a==='rir-close'){infoOpen=false;document.querySelector('#rir-overlay')?.remove();}
- else if(a==='timer-preset'){restDuration=Number(b.dataset.secs);restPaused=0;restEnd=0;restFinished=false;render();}
- else if(a==='timer-start'){restEnd=Date.now()+1000*(restPaused||restDuration);restPaused=0;restFinished=false;render();}
- else if(a==='timer-pause'){if(restEnd){restPaused=Math.max(0,Math.ceil((restEnd-Date.now())/1000));restEnd=0;}else{restPaused=0;restFinished=false;}render();}
+ else if(a==='timer-toggle'){restCollapsed=!restCollapsed;updateRestWidget();}
+ else if(a==='timer-preset'){restDuration=Number(b.dataset.secs);restPaused=0;restEnd=0;restFinished=false;updateRestWidget();}
+ else if(a==='timer-start'){restEnd=Date.now()+1000*(restPaused||restDuration);restPaused=0;restFinished=false;updateRestWidget();}
+ else if(a==='timer-pause'){if(restEnd){restPaused=Math.max(0,Math.ceil((restEnd-Date.now())/1000));restEnd=0;}else{restPaused=0;restFinished=false;}updateRestWidget();}
  else if(a==='travel-edit'){const s=getSession(state.week,state.day);travelPreview={profile:s.travel?.profile||'hotelroom',minutes:s.travel?.minutes||30};render();}
  else if(a==='travel-cancel'){travelPreview=null;render();}
  else if(a==='travel-accept'){const d=state.day,ss=getSession(state.week,d),choice=travelPreview;if(!choice)return;const exs=V5.travelPlan(choice.profile,d,choice.minutes,weekData().days[d]||[]);if(!exs.length)return toast('No substitute available for this day');if(ss.travel?.active&&Object.values(ss.travel.entries||{}).some(e=>(e.sets||[]).some(V5.hasLogged))&&!confirm('Change this workout? Your previous modified sets will be preserved in the session archive.'))return;if(ss.travel?.active){ss.travelHistory ||= [];if(Object.values(ss.travel.entries||{}).some(e=>(e.sets||[]).some(V5.hasLogged)))ss.travelHistory.push({...ss.travel,archivedAt:new Date().toISOString()});}if(ss.travel&&!ss.travel.active&&ss.travel.profile===choice.profile&&ss.travel.minutes===choice.minutes){ss.travel.active=true;}else{ss.travel={...choice,active:true,exercises:exs,entries:{}};}ss.completed=false;ss.completedAt=null;travelPreview=null;write();render();toast('Modified workout ready');}

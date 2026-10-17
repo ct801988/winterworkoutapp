@@ -1,24 +1,13 @@
-WINTER STRONG V5.12 — MOBILITY DEMONSTRATION IMAGES
+WINTER STRONG V5.13 — FLOATING REST TIMER
 
-PREREQUISITE: V5.11 must already be installed. This is an ADDITIVE update, not a complete app.
+Prerequisite: V5.11 mobility code and V5.12 library/images already installed.
 
-INSTALL:
-1. Export a backup from Winter Strong Settings.
-2. In the GitHub repository root upload library.js and sw.js, replacing the existing files.
-3. Open the exercise-images directory in GitHub, then upload all 42 mob-*.png images from this ZIP's exercise-images folder. Do not delete existing ex-*.png files.
-4. Commit. Reload after GitHub Pages publishes. Do not clear Safari site data.
+1. Export a workout backup in Settings before updating.
+2. Upload app.js, styles.css, sw.js to the GitHub repository ROOT (not exercise-images).
+3. Commit. Do not replace library.js or exercise-images.
+4. Refresh the installed app after GitHub Pages publishes; if cached, close and reopen.
+5. Test Monday: scroll between exercises; expand/collapse timer; start, pause, resume, reset; switch to Progress and back.
 
-WHAT CHANGED:
-- All 14 newly added V5.11 mobility library entries now link to 3 visual demonstration stages each.
-- All 42 new files are precached for offline use in sw.js.
-- Existing exercise photographs and workout tracking code are unchanged.
+Timer is manual start only. Preset changes reset the countdown. Timer is visible on workout days Mon/Tue/Thu/Fri/Sat, not Wednesday/Sunday or other tabs.
 
-IMPORTANT VISUAL LIMITATIONS:
-- Generated demonstration reference panels are approximations, not clinically validated movement photography. Always use written form cues; stop for pain.
-- Supported squat sit photos show the squat position without a support; use a sturdy support as directed in the written instructions.
-- Supine knee sways references show a gentle supine rotation. Keep knees bent and feet grounded per written cues.
-- Easy seated breathing uses a clearly illustrated sequence, not photography.
-- Some AI-generated photos are approximate movement snapshots and not a substitute for a professional demonstration.
-
-QA: 14/14 new exercise entries have three image paths; 42/42 files exist. Verify visually on phone after publishing.
-MOBILITY_IMAGE_REVIEW.jpg is an optional review contact sheet, NOT a GitHub app file.
+The widget remains anchored above the bottom navigation, not physically inserted into each exercise.

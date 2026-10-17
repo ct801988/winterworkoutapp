@@ -130,3 +130,19 @@
 .mobility-day b{display:grid;place-items:center;margin-top:5px;height:32px;border-radius:7px;background:#eff1f1;color:#a2aba7;font-size:16px}
 .mobility-day b.mobility-done{background:#d9f3e7;color:#157455}
 .mobility-bars{height:125px;margin-top:12px}
+
+/* V5.13 — single floating timer, independent of exercise card and scroll position. */
+#floating-rest[hidden]{display:none!important}
+#floating-rest{position:fixed;z-index:12;bottom:calc(77px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(calc(100% - 24px),650px);pointer-events:none}
+.floating-rest-shell{pointer-events:auto;background:#fff;border:1px solid #a9d9d0;border-radius:15px;padding:10px 12px;box-shadow:0 8px 28px #10283c38;color:#1c3646}
+.floating-rest-head{display:flex;align-items:center;gap:10px;min-height:28px}
+.floating-rest-title{font-weight:800;font-size:12px;white-space:nowrap}
+.floating-rest-head strong{font-size:23px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em;margin-left:auto}
+.floating-rest-toggle{border:0;background:#eaf5f2;border-radius:9px;color:#136c66;min-width:38px;min-height:35px;font-size:23px;line-height:1}
+.floating-rest-controls{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;margin-top:9px;padding-top:9px;border-top:1px solid #e5eeee}
+.floating-rest-controls[hidden]{display:none}
+.floating-rest-presets,.floating-rest-actions{display:flex;gap:5px;flex-wrap:wrap}
+.floating-rest-shell .btn.smallbtn{min-height:36px;padding:7px 10px}
+.floating-rest-shell .timer-active{background:#e0f4ee;border-color:#1d9386;color:#0b766c}
+body.has-floating-rest #screen{padding-bottom:calc(135px + env(safe-area-inset-bottom))}
+@media(max-width:390px){#floating-rest{width:calc(100% - 14px)}.floating-rest-shell{padding:8px 10px}.floating-rest-controls{gap:7px}.floating-rest-shell .btn.smallbtn{padding:7px 8px}}
