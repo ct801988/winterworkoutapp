@@ -13,7 +13,7 @@ const attr=AM;
 const mondayNow=()=>{const d=new Date(),offset=(d.getDay()+6)%7;d.setDate(d.getDate()-offset);return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');};
 function defaultState(){return {version:1,startDate:mondayNow(),week:1,day:DAY_ORDER[(new Date().getDay()+6)%7],tab:'today',sessions:{},checkins:{},lastBackup:null};}
 function load(){try{const raw=localStorage.getItem(STORE);if(!raw)return defaultState();const s=JSON.parse(raw);if(!s||typeof s!=='object'||!s.sessions||!s.checkins||s.version!==1)throw Error('Invalid');return {...defaultState(),...s,week:Math.max(1,Math.min(20,Number(s.week)||1))};}catch(e){return defaultState();}}
-let state=load();let toastId=null;let librarySearch='';let librarySelected=null;let infoOpen=false;let travelPreview=null;let restEnd=0;let restPaused=0;let restDuration=120;let restFinished=false;
+let state=load();let toastId=null;let librarySearch='';let librarySelected=null;let exerciseReturn=null;let infoOpen=false;let travelPreview=null;let restEnd=0;let restPaused=0;let restDuration=120;let restFinished=false;
 const screen=document.querySelector('#screen');
 const weekData=()=>PROGRAM.weeks[String(state.week)];
 const phaseIndex=w=>Math.floor((w-1)/4);
@@ -74,7 +74,7 @@ function progress(){const w=state.week,c=checkin(w);const filledWeeks=Array.from
 function visuals(){
  const lib=window.WINTER_EXERCISE_LIBRARY||[];
  const item=lib.find(x=>x.name===librarySelected);
- if(item)return `<div class="library-top"><button class="btn smallbtn" data-action="library-back">← All exercises</button></div><div class="eyebrow muted">EXERCISE REFERENCE</div><h1 style="margin:8px 0">${AM(item.name)}</h1><p class="muted small">${AM(item.group)} · ${AM(item.equipment)}</p><section class="panel section"><h3>Movement photos</h3><div class="exercise-image-grid">${item.images.map((im,i)=>{const labels=['1 · Starting position','2 · Working position','3 · Finish / return']; const alts=['Starting','Working','Finishing']; return `<figure class="exercise-figure"><img src="${attr(im)}" alt="${alts[i]||'Exercise'} position photo for ${attr(item.name)}" loading="lazy"><figcaption>${labels[i]||`${i+1} · Position`}</figcaption></figure>`;}).join('')}</div><p class="helper">Photo references to help you recognize the setup, working position and return phase. Use them as quick visual guides alongside the exercise cues below.</p><h3 style="margin-top:15px">Three simple cues</h3><ol class="exercise-steps">${item.steps.map(st=>`<li>${AM(st)}</li>`).join('')}</ol><a class="btn primary full" style="margin-top:12px" href="https://www.youtube.com/results?search_query=${encodeURIComponent(item.name.replace(/\s*\(each.*?\)/g,'')+' exercise proper form tutorial')}" target="_blank" rel="noopener noreferrer">▶ Find video demonstration ↗</a></section><section class="panel section"><h3>Form checkpoints</h3><p class="small" style="margin-top:9px">${AM(item.tip)}</p><div class="instruction"><b>Swap if needed:</b> ${AM(item.swap)}</div></section><button class="btn full" style="margin-top:15px" data-action="tab" data-tab="today">← Return to workout</button>`;
+ if(item)return `<div class="library-top"><button class="btn smallbtn" data-action="library-back">← All exercises</button></div><div class="eyebrow muted">EXERCISE REFERENCE</div><h1 style="margin:8px 0">${AM(item.name)}</h1><p class="muted small">${AM(item.group)} · ${AM(item.equipment)}</p><section class="panel section"><h3>Movement photos</h3><div class="exercise-image-grid">${item.images.map((im,i)=>{const labels=['1 · Starting position','2 · Working position','3 · Finish / return']; const alts=['Starting','Working','Finishing']; return `<figure class="exercise-figure"><img src="${attr(im)}" alt="${alts[i]||'Exercise'} position photo for ${attr(item.name)}" loading="lazy"><figcaption>${labels[i]||`${i+1} · Position`}</figcaption></figure>`;}).join('')}</div><p class="helper">Photo references to help you recognize the setup, working position and return phase. Use them as quick visual guides alongside the exercise cues below.</p><h3 style="margin-top:15px">Three simple cues</h3><ol class="exercise-steps">${item.steps.map(st=>`<li>${AM(st)}</li>`).join('')}</ol><a class="btn primary full" style="margin-top:12px" href="https://www.youtube.com/results?search_query=${encodeURIComponent(item.name.replace(/\s*\(each.*?\)/g,'')+' exercise proper form tutorial')}" target="_blank" rel="noopener noreferrer">▶ Find video demonstration ↗</a></section><section class="panel section"><h3>Form checkpoints</h3><p class="small" style="margin-top:9px">${AM(item.tip)}</p><div class="instruction"><b>Swap if needed:</b> ${AM(item.swap)}</div></section><button class="btn full" style="margin-top:15px" data-action="return-to-exercise">← Return to workout</button>`;
  const matches=lib.filter(x=>(x.name+' '+x.group+' '+x.equipment).toLowerCase().includes(librarySearch.toLowerCase()));
  return `<div class="eyebrow muted">REFERENCE LIBRARY</div><h1 style="margin:5px 0 9px">Exercise visuals & form</h1><p class="muted small">${lib.length} exercises from your actual 20-week plan. Tap any name for three photo reference positions, simple cues, and a demonstration search.</p><section class="section"><input class="text-field" data-input="library-search" aria-label="Search exercises" placeholder="Search exercise or muscle group" value="${attr(librarySearch)}"><div class="library-list">${matches.map(x=>`<button class="library-item" data-action="show-exercise" data-name="${attr(x.name)}"><span class="library-thumb">${x.images?.[0]?`<img src="${attr(x.images[0])}" alt="${attr(x.name)} thumbnail" loading="lazy">`:AM(x.symbol)}</span><span class="library-copy"><b>${AM(x.name)}</b><small>${AM(x.group)} · ${AM(x.equipment)}</small></span><span class="library-chevron">›</span></button>`).join('')||'<p class="empty">No matching exercises</p>'}</div></section>`;
 }
@@ -111,7 +111,29 @@ document.addEventListener('input',event=>{if(event.target.dataset.input==='libra
 document.addEventListener('change',event=>{if(event.target.matches('[data-input]')){setValueFromInput(event.target);if(event.target.matches('input[data-part="variant"]'))render();}if(event.target.id==='file-import'){importFile(event.target.files?.[0]);event.target.value='';}});
 document.addEventListener('click',event=>{const b=event.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;
  if(a==='tab'){state.tab=b.dataset.tab;travelPreview=null;if(state.tab==='visuals')librarySelected=null;write();render();window.scrollTo(0,0);}
- else if(a==='show-exercise'){librarySelected=b.dataset.name;state.tab='visuals';write();render();window.scrollTo(0,0);}
+ else if(a==='show-exercise'){
+   // A workout reference opens in Visuals, but remember where the user was.
+   exerciseReturn=state.tab==='today'?{
+     week:state.week,day:state.day,scrollY:window.scrollY,
+     exerciseIndex:[...document.querySelectorAll('.exercise-card')].indexOf(b.closest('.exercise-card'))
+   }:null;
+   librarySelected=b.dataset.name;state.tab='visuals';write();render();window.scrollTo(0,0);
+ }
+ else if(a==='return-to-exercise'){
+   const origin=exerciseReturn;exerciseReturn=null;
+   state.tab='today';travelPreview=null;
+   if(origin){state.week=origin.week;state.day=origin.day;}
+   librarySelected=null;write();render();
+   requestAnimationFrame(()=>{
+     if(origin){
+       const cards=document.querySelectorAll('.exercise-card');
+       const card=cards[origin.exerciseIndex];
+       // First restore exact viewport placement, then fall back to the exercise card.
+       window.scrollTo(0,origin.scrollY);
+       if(card){const r=card.getBoundingClientRect();if(r.bottom<60||r.top>window.innerHeight-60)card.scrollIntoView({block:'center'});}
+     }else window.scrollTo(0,0);
+   });
+ }
  else if(a==='library-back'){librarySelected=null;render();window.scrollTo(0,0);}
  else if(a==='week'){selectWeek(state.week+Number(b.dataset.step));}
  else if(a==='week-set'){selectWeek(b.dataset.week);}
