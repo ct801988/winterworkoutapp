@@ -1,30 +1,16 @@
-WINTER STRONG V5.5 — EXERCISE VISUALS REPAIR
+WINTER STRONG V5.7 — BRANDING AND ICON ALIGNMENT
 
-Upload app.js, styles.css, sw.js to the ROOT of your existing GitHub repository.
-Upload the full exercise-images folder (126 PNG files) into the existing exercise-images folder, overwriting its existing PNGs.
-Do not delete program.js, library.js, v5-engine.js, index.html, or icons.
+WHAT THIS CHANGES
+- Replaces the original W header badge with the same mountain-and-dumbbell icon used on the iPhone Home Screen.
+- Removes white corner/background artifacts from all three icon PNGs, retaining the original design.
+- Centers the header icon and updates the offline cache version.
+- Does not change app.js, logging, exercise photos, or saved workout data.
 
-WHAT WAS FIXED
-- Corrected a broken mobile list layout that allowed exercise thumbnails to expand dramatically.
-- Removed cross-photo seams and neighboring photo fragments from the 126 locally stored exercise image panels when separable.
-- Replaced 9 clearly mismatched exercise image sequences with closest available movement references.
-- Updated offline cache name so the revised images can load after publishing.
-- Kept all V5.4 logging, conditioning, travel, navigation, and history behavior unchanged.
+GITHUB UPLOAD
+1. Export a backup from Winter Strong Settings.
+2. Upload index.html, styles.css and sw.js into the repository ROOT (replace existing).
+3. Open the repository's icons folder and upload icon-180.png, icon-192.png and icon-512.png (replace existing).
+4. Commit, wait for GitHub Pages, then close and reopen Winter Strong.
+5. If the Home Screen icon remains old, remove and re-add the shortcut from Safari after confirming your workout data backup. Do not clear Safari website data.
 
-LIMITATIONS / IMPORTANT
-These are AI-generated reference images, not validated coaching demonstrations.
-The existing photo library was assembled from multi-exercise contact sheets.
-For several entries the original source did not contain the correct exercise; the closest existing reference is substituted, NOT a new exact demonstration.
-Examples: Bulgarian split squat uses reverse-lunge imagery; incline dumbbell bench uses general dumbbell bench imagery.
-Do not rely on substituted photos as exact form instruction. Use the exercise cues and video tutorial search for detailed form.
-For a fully accurate visual library, these remaining references must eventually be replaced with independently verified, exercise-specific photos.
-
-INSTALL / VERIFY
-1. In the app: Settings -> Export backup before updating.
-2. Unzip this file. Upload the three root files to your repository root.
-3. Upload all 126 PNGs to exercise-images/ preserving filenames and replacing old versions.
-4. Commit. Wait for GitHub Pages to publish.
-5. Reopen the Home Screen app online (close/reopen if needed).
-6. Visuals should show small thumbnails, not giant cropped images; open several exercises to inspect.
-
-Changes are designed not to modify local workout storage. Browser/iPhone live testing has not been performed.
+Note: iOS Home Screen icon cropping and cache behavior may differ by device; not tested on live iPhone.
