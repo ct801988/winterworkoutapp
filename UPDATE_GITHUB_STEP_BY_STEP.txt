@@ -1,0 +1,12 @@
+WINTER STRONG v2 — EXERCISE LIBRARY UPDATE
+
+1. In the existing app on your phone, open Settings > Export backup. Save the JSON file.
+2. On your computer, unzip WinterStrong_v2_Exercise_Library.zip.
+3. Open https://github.com/ct801988/winterworkoutapp
+4. Choose Add file > Upload files. Drag ALL app files from the unzipped folder, including the icons folder contents. GitHub should recognize existing filenames as replacements. Do not upload the ZIP itself.
+5. Commit changes to the main branch. Keep index.html, app.js, styles.css, program.js, library.js, sw.js, and manifest.webmanifest at the repository ROOT; icons/ stays as a folder.
+6. Wait a few minutes for GitHub Pages to deploy. Open https://ct801988.github.io/winterworkoutapp/ and check for a Visuals tab.
+7. On iPhone, close and reopen Winter Strong while online. If it still shows the old version, reopen the site in Safari, refresh, and reopen the Home Screen app. The service worker may need a second reload.
+8. Verify workout history is intact. If not, Settings > Restore backup, using your JSON export.
+
+What changed: a searchable Visuals tab, three written movement cues for every exercise in the plan, video search links, and tap-to-reference exercise names on the workout screen. No changes to your workout-history storage format. The 3 cards are instruction steps, not literal photo illustrations. YouTube demonstrations require internet; the text library is cached offline.
