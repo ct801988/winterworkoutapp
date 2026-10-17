@@ -767,7 +767,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Keep the shoulder down and movement smooth. No forced end-range.",
     "swap": "Small arm circles or gentle shoulder rolls.",
-    "images": []
+    "images": ["exercise-images/mob-01-start.png", "exercise-images/mob-01-middle.png", "exercise-images/mob-01-finish.png"]
   },
   {
     "name": "Hip CARs",
@@ -781,7 +781,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Use a small controlled range; avoid lumbar twisting or hip pinching.",
     "swap": "Supported standing hip circles.",
-    "images": []
+    "images": ["exercise-images/mob-00-start.png", "exercise-images/mob-00-middle.png", "exercise-images/mob-00-finish.png"]
   },
   {
     "name": "Adductor rock-backs",
@@ -795,7 +795,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Move gently; stop short of groin discomfort.",
     "swap": "Seated gentle adductor stretch.",
-    "images": []
+    "images": ["exercise-images/mob-05-start.png", "exercise-images/mob-05-middle.png", "exercise-images/mob-05-finish.png"]
   },
   {
     "name": "Knee-to-wall ankle rocks",
@@ -809,7 +809,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Keep knee tracking over toes; heel stays down.",
     "swap": "Seated ankle pumps.",
-    "images": []
+    "images": ["exercise-images/mob-07-start.png", "exercise-images/mob-07-middle.png", "exercise-images/mob-07-finish.png"]
   },
   {
     "name": "Ankle CARs",
@@ -823,7 +823,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Avoid moving the entire leg or forcing a painful position.",
     "swap": "Ankle alphabet.",
-    "images": []
+    "images": ["exercise-images/mob-06-start.png", "exercise-images/mob-06-middle.png", "exercise-images/mob-06-finish.png"]
   },
   {
     "name": "Thread the needle",
@@ -837,7 +837,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Let the motion come from the upper back, not a forced shoulder stretch.",
     "swap": "Side-lying thoracic open book.",
-    "images": []
+    "images": ["exercise-images/mob-02-start.png", "exercise-images/mob-02-middle.png", "exercise-images/mob-02-finish.png"]
   },
   {
     "name": "Cat-cow",
@@ -851,7 +851,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Keep the movement comfortable and avoid forcing the neck.",
     "swap": "Seated pelvic tilts.",
-    "images": []
+    "images": ["exercise-images/mob-03-start.png", "exercise-images/mob-03-middle.png", "exercise-images/mob-03-finish.png"]
   },
   {
     "name": "Quadruped thoracic rotations",
@@ -865,7 +865,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Keep hips mostly still and do not crank on the neck.",
     "swap": "Thoracic open book.",
-    "images": []
+    "images": ["exercise-images/mob-04-start.png", "exercise-images/mob-04-middle.png", "exercise-images/mob-04-finish.png"]
   },
   {
     "name": "Cross-body shoulder stretch",
@@ -879,7 +879,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Do not pull directly on the elbow or force a painful shoulder position.",
     "swap": "Gentle shoulder rolls.",
-    "images": []
+    "images": ["exercise-images/mob-11-start.png", "exercise-images/mob-11-middle.png", "exercise-images/mob-11-finish.png"]
   },
   {
     "name": "Supported chest opener",
@@ -893,7 +893,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Avoid sharp front-of-shoulder pinching.",
     "swap": "Low-arm chest opening with hands behind back.",
-    "images": []
+    "images": ["exercise-images/mob-10-start.png", "exercise-images/mob-10-middle.png", "exercise-images/mob-10-finish.png"]
   },
   {
     "name": "Gentle calf stretch",
@@ -907,7 +907,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "No bouncing or forcing ankle dorsiflexion.",
     "swap": "Easy heel raises.",
-    "images": []
+    "images": ["exercise-images/mob-08-start.png", "exercise-images/mob-08-middle.png", "exercise-images/mob-08-finish.png"]
   },
   {
     "name": "Supported squat sit",
@@ -921,7 +921,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Do not force deep range after heavy legs or if knees or hips hurt.",
     "swap": "Supported partial squat.",
-    "images": []
+    "images": ["exercise-images/mob-09-start.png", "exercise-images/mob-09-middle.png", "exercise-images/mob-09-finish.png"]
   },
   {
     "name": "Supine knee sways",
@@ -935,7 +935,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "Keep motion pain-free and avoid forcing spinal rotation.",
     "swap": "Gentle pelvic tilts.",
-    "images": []
+    "images": ["exercise-images/mob-12-start.png", "exercise-images/mob-12-middle.png", "exercise-images/mob-12-finish.png"]
   },
   {
     "name": "Easy seated breathing",
@@ -949,6 +949,6 @@ window.WINTER_EXERCISE_LIBRARY = [
     ],
     "tip": "No breath holding or forced deep breathing.",
     "swap": "Relaxed normal breathing.",
-    "images": []
+    "images": ["exercise-images/mob-13-start.png", "exercise-images/mob-13-middle.png", "exercise-images/mob-13-finish.png"]
   }
 ];
