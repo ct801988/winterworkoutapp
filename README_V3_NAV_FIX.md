@@ -1,0 +1,1 @@
+Version 3.1: fixed bottom navigation from four columns to five, reduced icons/labels, bumped offline cache. Upload extracted files to GitHub root with icons/ and exercise-images/ directories; commit to main. Export backup first. Test all five tabs.
