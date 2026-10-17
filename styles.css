@@ -42,3 +42,11 @@
 /* V5.4: three-column default logging, with optional four-column advanced RIR layout. */
 .log-header.simple-logging,.log-row.simple-logging{grid-template-columns:32px minmax(0,1.3fr) minmax(0,1fr);gap:9px}
 @media(max-width:370px){.log-header.simple-logging,.log-row.simple-logging{grid-template-columns:26px minmax(0,1.3fr) minmax(0,1fr);gap:6px}}
+
+/* V5.5: Keep the visual-library thumbnail compact on all iPhone viewport sizes. */
+.library-item{min-width:0;max-width:100%;overflow:hidden;align-items:center}
+.library-item .library-thumb{width:64px!important;height:64px!important;min-width:64px!important;max-width:64px!important;flex:0 0 64px!important;overflow:hidden!important;display:block!important}
+.library-item .library-thumb img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:cover!important}
+.library-item .library-copy{min-width:0;overflow-wrap:anywhere}
+.library-item .library-chevron{flex:0 0 14px}
+.exercise-figure img{max-width:100%;object-fit:contain}
