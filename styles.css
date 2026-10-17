@@ -8,3 +8,33 @@
 .exercise-image-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}.exercise-figure{margin:0;background:#f4f8f7;border:1px solid #dce8e5;border-radius:13px;overflow:hidden}.exercise-figure img{display:block;width:100%;height:auto;aspect-ratio:240/245;object-fit:contain}.exercise-figure figcaption{font-size:11px;color:#47616b;text-align:center;padding:0 4px 10px;font-weight:650}.exercise-steps{padding-left:22px;margin:12px 0;display:grid;gap:10px;font-size:13px;line-height:1.5}
 
 .bottom-nav{width:100%;grid-template-columns:repeat(5,minmax(0,1fr));overflow:hidden}.bottom-nav .nav-item{min-width:0;width:100%;padding:4px 1px;white-space:nowrap;font-size:clamp(8px,2.35vw,10px);touch-action:manipulation}.bottom-nav .nav-ico{font-size:21px;line-height:25px;pointer-events:none}.bottom-nav .nav-item span{pointer-events:none}@media(max-width:360px){.bottom-nav .nav-item{font-size:8px}.bottom-nav .nav-ico{font-size:19px}}
+
+/* V5: accessible set-level RIR, goals, travel plan, timer, and modal */
+.goal-box{margin:12px 0;background:#eef7f5;border:1px solid #cce9e0;border-radius:12px;padding:12px}
+.goal-box .goal-label{font-size:10px;font-weight:850;letter-spacing:.085em;color:#136d65}
+.goal-box strong{display:block;font-size:18px;color:#153b3c;margin:5px 0;line-height:1.35}
+.goal-box p{font-size:12px;color:#365659;line-height:1.5;margin:5px 0 8px}
+.goal-prior{display:block;font-size:11px;color:#697d83;border-top:1px solid #cce2dd;padding-top:7px;overflow-wrap:anywhere}
+.log-header,.log-row{grid-template-columns:27px minmax(0,1.25fr) minmax(0,.83fr) minmax(0,.81fr);gap:5px}
+.log-row input,.log-row select{min-width:0;width:100%;padding-left:6px;padding-right:5px;font-size:13px}
+.log-row .rir-select{min-height:42px}
+.log-header{font-size:9px;letter-spacing:0;align-items:end}
+.with-info{display:flex;align-items:center;gap:2px}
+.info-button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:#ddefed;color:#087870;font-weight:850;font-size:13px;line-height:1;width:22px;height:22px;min-width:22px;vertical-align:middle;cursor:pointer}
+.exercise-prescription .info-button{margin-left:2px}
+.modal-overlay{position:fixed;inset:0;background:#071721b8;display:flex;align-items:center;justify-content:center;padding:15px;z-index:100}
+.info-modal{width:min(100%,450px);max-height:85dvh;overflow:auto;background:white;border-radius:19px;padding:22px;box-shadow:0 15px 45px #05182555}
+.info-modal p{margin:9px 0;font-size:14px}.info-modal ul{padding-left:22px;font-size:13px;line-height:1.8}
+.readiness{margin-bottom:12px}.readiness .select-field{width:100%;margin-top:5px}
+.rest-timer .timer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.rest-timer #rest-time{font-size:31px;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.timer-choices{display:flex;gap:5px}.timer-choices .btn{padding:8px;font-size:11px}.timer-active{background:#d8f0eb!important;border-color:#72c8b6!important}
+.travel-section .travel-preview{border-top:1px solid #e2edec;margin-top:13px;padding-top:13px}
+.preview-plan{background:#f2f7f6;border:1px solid #dae7e5;border-radius:12px;margin-top:12px;padding:10px 12px;font-size:12px}
+.preview-plan ol{margin:7px 0 0;padding-left:19px;line-height:1.7}
+.travel-cues{margin:12px 0;border:1px solid #e0e8e7;border-radius:12px;padding:10px;font-size:12px}
+.travel-cues summary{font-weight:800;color:#0c7972;cursor:pointer}
+.travel-cues ol{padding-left:20px}.travel-cues p{margin:8px 0}.travel-cues a{color:#087a74}
+.completion-box{background:#e9f6ef;border:1px solid #bce3d1;border-radius:12px;padding:12px;margin-bottom:12px}
+.completion-box strong{color:#155c44}.completion-box p{font-size:12px;color:#425d56;margin-top:5px}
+@media(max-width:370px){.log-header,.log-row{grid-template-columns:24px minmax(0,1.2fr) minmax(0,.78fr) minmax(0,.8fr);gap:4px}.log-row input,.log-row select{font-size:12px;padding-left:4px;padding-right:2px}}
