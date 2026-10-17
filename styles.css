@@ -51,18 +51,59 @@
 .library-item .library-chevron{flex:0 0 14px}
 .exercise-figure img{max-width:100%;object-fit:contain}
 
-/* V5.6: Use the same mountain/dumbbell artwork in the app header as the installed icon. */
-.topbar .logo{width:44px;height:44px;min-width:44px;flex:0 0 44px;border-radius:12px;overflow:hidden;background:#101c2d;display:block}
-.topbar .logo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:12px}
 
-/* V5.7: Prevent white halo around the icon and center branding within the header. */
-.topbar .logo{background:#0d1318;display:flex;align-items:center;justify-content:center;padding:0;line-height:0}
-.topbar .logo img{width:100%;height:100%;object-fit:contain;object-position:center center}
-.topbar .brand{min-width:0}
-
-/* V5.8: Give the detailed Winter Strong icon room to display fully in the header. */
-.topbar{min-height:88px;gap:12px;padding:calc(env(safe-area-inset-top) + 10px) 16px 12px}
-.topbar .logo{width:60px;height:60px;min-width:60px;flex:0 0 60px;border-radius:12px;overflow:hidden;background:#0d1318;padding:0;display:flex;align-items:center;justify-content:center}
-.topbar .logo img{display:block;width:60px;height:60px;max-width:100%;max-height:100%;object-fit:contain;object-position:center;border-radius:12px}
-.topbar .brand{min-width:0;flex:1}
-@media(max-width:350px){.topbar .logo{width:54px;height:54px;min-width:54px;flex-basis:54px}.topbar .logo img{width:54px;height:54px}.topbar{gap:9px;padding-left:12px;padding-right:12px}}
+/* V5.9: Stable, contained branding header. No logo overflow or fixed-height clipping. */
+.topbar{
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  min-height:72px;
+  height:auto;
+  padding:12px 16px;
+  overflow:hidden;
+}
+.topbar .logo{
+  box-sizing:border-box;
+  position:static;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 46px;
+  width:46px;
+  min-width:46px;
+  max-width:46px;
+  height:46px;
+  min-height:46px;
+  max-height:46px;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  border-radius:10px;
+  background:#0d1318;
+  line-height:0;
+  transform:none;
+}
+.topbar .logo img{
+  display:block;
+  position:static;
+  width:46px;
+  height:46px;
+  min-width:46px;
+  min-height:46px;
+  max-width:100%;
+  max-height:100%;
+  margin:0;
+  padding:0;
+  object-fit:contain;
+  object-position:center;
+  border-radius:10px;
+  transform:none;
+}
+.topbar .brand{display:flex;flex:1 1 auto;flex-direction:column;justify-content:center;min-width:0;gap:2px}
+.topbar .brand span{line-height:1.2}
+.topbar .brand small{line-height:1.25}
+.topbar .header-action{flex:0 0 35px;margin-left:auto}
+@media(max-width:350px){.topbar{gap:9px;padding:10px 12px}}

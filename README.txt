@@ -1,13 +1,7 @@
-Winter Strong V5.8 - Header Logo Fit
+Winter Strong V5.9 — Header Alignment Fix
 
-Fixes the small, cramped Winter Strong logo in the in-app header.
-The new icon now displays at 60 x 60 px (54 x 54 on narrow screens), fully contained and centered.
-No changes to workout tracking, saved data, or exercise photos.
+Fixes V5.8 oversized logo hanging below the header. The icon is now a 46x46 square, centered within a flexible header with adequate padding and no overflow. The workout application and data schema are unchanged.
 
-Upload to GitHub repository ROOT (replace existing):
-- index.html
-- styles.css
-- sw.js
+Upload index.html, styles.css, and sw.js to the ROOT of your existing GitHub repository, replacing the existing versions. Do not replace icons, app.js, or exercise images.
 
-Do NOT upload README.txt. No need to change icons or exercise-images.
-Export a workout backup before updating. After GitHub Pages publishes, close and reopen the app.
+Backup workout data before any app update. After GitHub Pages publishes, close/reopen the app.
