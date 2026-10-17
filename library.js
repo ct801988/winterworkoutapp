@@ -3,7 +3,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "1-arm DB row (each)",
     "group": "Back / lats / rear delts",
     "equipment": "Dumbbells or pull-up bar",
-    "symbol": "\u2197\ufe0f",
+    "symbol": "↗️",
     "steps": [
       "Brace your trunk and position shoulders.",
       "Pull with elbows while keeping neck relaxed.",
@@ -21,7 +21,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "90/90 hip switches",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Sit with both knees bent near 90 degrees.",
       "Rotate knees side to side without forcing them.",
@@ -39,7 +39,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Ab-wheel rollout",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Brace gently and find a stable position.",
       "Perform the movement slowly without swinging.",
@@ -57,7 +57,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Barbell Romanian deadlift",
     "group": "Hamstrings / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\u2194\ufe0f",
+    "symbol": "↔️",
     "steps": [
       "Hold the weight close to your thighs with soft knees.",
       "Hinge hips backward; keep the weight close to your legs.",
@@ -75,7 +75,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Barbell back squat",
     "group": "Legs / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\ud83c\udfcb\ufe0f",
+    "symbol": "🏋️",
     "steps": [
       "Set feet and brace your trunk.",
       "Lower with control through a comfortable range.",
@@ -93,7 +93,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Barbell bench press",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -111,7 +111,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Barbell hip thrust",
     "group": "Hamstrings / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\u2194\ufe0f",
+    "symbol": "↔️",
     "steps": [
       "Set a stable position and brace.",
       "Move from the hips or knees slowly.",
@@ -129,7 +129,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Calf raise",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Start in a comfortable position.",
       "Move gently within an easy range.",
@@ -147,7 +147,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Chest-supported DB row",
     "group": "Back / lats / rear delts",
     "equipment": "Dumbbells or pull-up bar",
-    "symbol": "\u2197\ufe0f",
+    "symbol": "↗️",
     "steps": [
       "Brace your trunk and position shoulders.",
       "Pull with elbows while keeping neck relaxed.",
@@ -165,7 +165,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Chest-supported rear-delt row",
     "group": "Back / lats / rear delts",
     "equipment": "Dumbbells or pull-up bar",
-    "symbol": "\u2197\ufe0f",
+    "symbol": "↗️",
     "steps": [
       "Brace your trunk and position shoulders.",
       "Pull with elbows while keeping neck relaxed.",
@@ -183,7 +183,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Chin-up / pull-up",
     "group": "Back / lats / rear delts",
     "equipment": "Dumbbells or pull-up bar",
-    "symbol": "\u2197\ufe0f",
+    "symbol": "↗️",
     "steps": [
       "Brace your trunk and position shoulders.",
       "Pull with elbows while keeping neck relaxed.",
@@ -201,7 +201,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Close-grip press / triceps extension",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -219,7 +219,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Comfortable wall slides",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Start in a comfortable position.",
       "Move gently within an easy range.",
@@ -237,7 +237,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Cross-body hammer curl",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Stand or sit tall and brace.",
       "Lift through the intended joint without swinging.",
@@ -255,7 +255,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "DB Bulgarian split squat (each)",
     "group": "Legs / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\ud83c\udfcb\ufe0f",
+    "symbol": "🏋️",
     "steps": [
       "Set feet and brace your trunk.",
       "Lower with control through a comfortable range.",
@@ -273,7 +273,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "DB bench / weighted vest push-up",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -291,7 +291,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "DB lateral raise",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Hold dumbbells by sides with slight elbow bend.",
       "Raise arms out to the sides in a comfortable arc.",
@@ -309,7 +309,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "DB overhead press",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -327,7 +327,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "DB reverse lunge (each leg)",
     "group": "Legs / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\ud83c\udfcb\ufe0f",
+    "symbol": "🏋️",
     "steps": [
       "Set feet and brace your trunk.",
       "Lower with control through a comfortable range.",
@@ -345,7 +345,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "DB triceps extension",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -363,7 +363,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "EZ-bar curl",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Stand or sit tall and brace.",
       "Lift through the intended joint without swinging.",
@@ -381,7 +381,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Easy breathing + gentle neck retraction",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Start in a comfortable position.",
       "Move gently within an easy range.",
@@ -399,7 +399,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Front / goblet squat",
     "group": "Legs / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\ud83c\udfcb\ufe0f",
+    "symbol": "🏋️",
     "steps": [
       "Set feet and brace your trunk.",
       "Lower with control through a comfortable range.",
@@ -417,7 +417,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Half-kneeling hip flexor stretch",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Start in a comfortable position.",
       "Move gently within an easy range.",
@@ -435,7 +435,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Hammer curl",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Stand or sit tall and brace.",
       "Lift through the intended joint without swinging.",
@@ -453,7 +453,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Hanging knee / leg raise",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Brace gently and find a stable position.",
       "Perform the movement slowly without swinging.",
@@ -471,7 +471,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Hanging knee raise / leg raise",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Brace gently and find a stable position.",
       "Perform the movement slowly without swinging.",
@@ -489,7 +489,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Incline DB bench press",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -507,7 +507,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Incline DB curl",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Stand or sit tall and brace.",
       "Lift through the intended joint without swinging.",
@@ -525,7 +525,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Lying EZ triceps extension",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -543,7 +543,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Pull-up / weighted pull-up",
     "group": "Back / lats / rear delts",
     "equipment": "Dumbbells or pull-up bar",
-    "symbol": "\u2197\ufe0f",
+    "symbol": "↗️",
     "steps": [
       "Brace your trunk and position shoulders.",
       "Pull with elbows while keeping neck relaxed.",
@@ -561,7 +561,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Rear-delt DB fly",
     "group": "Back / lats / rear delts",
     "equipment": "Dumbbells or pull-up bar",
-    "symbol": "\u2197\ufe0f",
+    "symbol": "↗️",
     "steps": [
       "Brace your trunk and position shoulders.",
       "Pull with elbows while keeping neck relaxed.",
@@ -579,7 +579,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Reverse crunch / pelvic curl",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Stand or sit tall and brace.",
       "Lift through the intended joint without swinging.",
@@ -597,7 +597,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Scapular push-up plus",
     "group": "Chest / shoulders / triceps",
     "equipment": "Bench, dumbbells or barbell",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Set shoulders and stable body position.",
       "Lower or bend elbows under control.",
@@ -615,7 +615,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Side plank (sec/side)",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Brace gently and find a stable position.",
       "Perform the movement slowly without swinging.",
@@ -633,7 +633,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Single-leg sliding ham curl",
     "group": "Hamstrings / glutes",
     "equipment": "Barbell or dumbbells",
-    "symbol": "\u2194\ufe0f",
+    "symbol": "↔️",
     "steps": [
       "Set a stable position and brace.",
       "Move from the hips or knees slowly.",
@@ -651,7 +651,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Sliding hamstring curl",
     "group": "Arms / shoulders",
     "equipment": "Dumbbells or EZ bar",
-    "symbol": "\ud83d\udcaa",
+    "symbol": "💪",
     "steps": [
       "Stand or sit tall and brace.",
       "Lift through the intended joint without swinging.",
@@ -669,7 +669,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Standing calf raise",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Start in a comfortable position.",
       "Move gently within an easy range.",
@@ -687,7 +687,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Suitcase carry (sec/side)",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Brace gently and find a stable position.",
       "Perform the movement slowly without swinging.",
@@ -705,7 +705,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Thoracic open book",
     "group": "Mobility / recovery",
     "equipment": "Bodyweight / mat",
-    "symbol": "\ud83e\uddd8",
+    "symbol": "🧘",
     "steps": [
       "Lie on your side with hips and knees bent.",
       "Rotate your upper arm and chest open gently.",
@@ -723,7 +723,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Weighted corkscrew V-tuck (each)",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Balance on your sitting bones with core braced.",
       "Extend legs and rotate gently through a controlled arc.",
@@ -741,7 +741,7 @@ window.WINTER_EXERCISE_LIBRARY = [
     "name": "Weighted crunch",
     "group": "Core / obliques",
     "equipment": "Mat, weight or pull-up bar",
-    "symbol": "\u25ce",
+    "symbol": "◎",
     "steps": [
       "Brace gently and find a stable position.",
       "Perform the movement slowly without swinging.",
@@ -754,5 +754,201 @@ window.WINTER_EXERCISE_LIBRARY = [
       "exercise-images/ex-41-middle.png",
       "exercise-images/ex-41-finish.png"
     ]
+  },
+  {
+    "name": "Shoulder CARs",
+    "group": "Shoulders",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Stand tall with ribs stacked and arm relaxed.",
+      "Move one straight arm through a slow comfortable circle without twisting your torso.",
+      "Reverse direction; make the circle smaller if pinching occurs."
+    ],
+    "tip": "Keep the shoulder down and movement smooth. No forced end-range.",
+    "swap": "Small arm circles or gentle shoulder rolls.",
+    "images": []
+  },
+  {
+    "name": "Hip CARs",
+    "group": "Hips",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Hold a stable support and lift one knee in front.",
+      "Slowly sweep the knee out to the side, rotate through a comfortable arc, and return.",
+      "Reverse the path while keeping your pelvis as still as possible."
+    ],
+    "tip": "Use a small controlled range; avoid lumbar twisting or hip pinching.",
+    "swap": "Supported standing hip circles.",
+    "images": []
+  },
+  {
+    "name": "Adductor rock-backs",
+    "group": "Hips / groin",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Start on hands and knees, then extend one leg to the side.",
+      "Keep a neutral spine and gently move hips backward.",
+      "Return forward without bouncing; repeat and switch sides."
+    ],
+    "tip": "Move gently; stop short of groin discomfort.",
+    "swap": "Seated gentle adductor stretch.",
+    "images": []
+  },
+  {
+    "name": "Knee-to-wall ankle rocks",
+    "group": "Ankles",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Face a wall with one foot flat a short distance away.",
+      "Bend the knee toward the wall while keeping the heel planted.",
+      "Ease back and repeat without forcing the ankle."
+    ],
+    "tip": "Keep knee tracking over toes; heel stays down.",
+    "swap": "Seated ankle pumps.",
+    "images": []
+  },
+  {
+    "name": "Ankle CARs",
+    "group": "Ankles",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Sit or stand with support and lift one foot.",
+      "Trace a slow circle with the toes through comfortable ankle motion.",
+      "Reverse direction and repeat on the other side."
+    ],
+    "tip": "Avoid moving the entire leg or forcing a painful position.",
+    "swap": "Ankle alphabet.",
+    "images": []
+  },
+  {
+    "name": "Thread the needle",
+    "group": "Thoracic spine",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Start on hands and knees.",
+      "Slide one arm under the opposite arm, rotating gently through the upper back.",
+      "Return to center; repeat and switch sides."
+    ],
+    "tip": "Let the motion come from the upper back, not a forced shoulder stretch.",
+    "swap": "Side-lying thoracic open book.",
+    "images": []
+  },
+  {
+    "name": "Cat-cow",
+    "group": "Spine",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Start on hands and knees with hands under shoulders.",
+      "Exhale and gently round your back.",
+      "Inhale and move toward a comfortable extended position; repeat slowly."
+    ],
+    "tip": "Keep the movement comfortable and avoid forcing the neck.",
+    "swap": "Seated pelvic tilts.",
+    "images": []
+  },
+  {
+    "name": "Quadruped thoracic rotations",
+    "group": "Thoracic spine",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Start on hands and knees; place one hand behind your head.",
+      "Rotate that elbow gently upward, following with your upper back.",
+      "Return to center and switch sides."
+    ],
+    "tip": "Keep hips mostly still and do not crank on the neck.",
+    "swap": "Thoracic open book.",
+    "images": []
+  },
+  {
+    "name": "Cross-body shoulder stretch",
+    "group": "Shoulders",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Stand tall and bring one arm across your chest.",
+      "Support it gently with the other arm above the elbow.",
+      "Breathe normally, release, and switch sides."
+    ],
+    "tip": "Do not pull directly on the elbow or force a painful shoulder position.",
+    "swap": "Gentle shoulder rolls.",
+    "images": []
+  },
+  {
+    "name": "Supported chest opener",
+    "group": "Chest / shoulders",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Stand in a doorway with one forearm supported at a comfortable height.",
+      "Step forward slightly until you feel a gentle chest stretch.",
+      "Keep ribs down and breathe; repeat on the other side."
+    ],
+    "tip": "Avoid sharp front-of-shoulder pinching.",
+    "swap": "Low-arm chest opening with hands behind back.",
+    "images": []
+  },
+  {
+    "name": "Gentle calf stretch",
+    "group": "Calves / ankles",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Stand facing a wall with one foot behind you.",
+      "Keep the back heel grounded and bend the front knee slightly.",
+      "Hold a mild calf stretch, then switch legs."
+    ],
+    "tip": "No bouncing or forcing ankle dorsiflexion.",
+    "swap": "Easy heel raises.",
+    "images": []
+  },
+  {
+    "name": "Supported squat sit",
+    "group": "Hips / ankles",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Hold a sturdy counter or doorframe for balance.",
+      "Lower into a comfortable squat depth with heels supported if needed.",
+      "Breathe and stand back up slowly."
+    ],
+    "tip": "Do not force deep range after heavy legs or if knees or hips hurt.",
+    "swap": "Supported partial squat.",
+    "images": []
+  },
+  {
+    "name": "Supine knee sways",
+    "group": "Hips / low back",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Lie on your back with knees bent and feet flat.",
+      "Let both knees sway gently side to side through a small range.",
+      "Return to center and repeat with easy breathing."
+    ],
+    "tip": "Keep motion pain-free and avoid forcing spinal rotation.",
+    "swap": "Gentle pelvic tilts.",
+    "images": []
+  },
+  {
+    "name": "Easy seated breathing",
+    "group": "Recovery",
+    "equipment": "Bodyweight / optional support",
+    "symbol": "↔",
+    "steps": [
+      "Sit or lie in a comfortable supported position.",
+      "Inhale gently through the nose and allow your ribs to expand.",
+      "Exhale slowly without straining; repeat."
+    ],
+    "tip": "No breath holding or forced deep breathing.",
+    "swap": "Relaxed normal breathing.",
+    "images": []
   }
 ];

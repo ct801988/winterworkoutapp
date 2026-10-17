@@ -107,3 +107,26 @@
 .topbar .brand small{line-height:1.25}
 .topbar .header-action{flex:0 0 35px;margin-left:auto}
 @media(max-width:350px){.topbar{gap:9px;padding:10px 12px}}
+
+/* V5.10: Wednesday mobility demonstration buttons, independent of checkbox labels */
+.mobility-row{display:flex;align-items:stretch;gap:7px;min-width:0}
+.mobility-check{flex:1;min-width:0;cursor:pointer}
+.mobility-check span{min-width:0;line-height:1.4;font-size:13px}
+.mobility-info{flex:0 0 44px;min-width:44px;min-height:44px;align-self:stretch;border:1px solid #cde5e0;border-radius:12px;background:#f0faf7;color:#117971;font-size:22px;font-weight:700;cursor:pointer;display:grid;place-items:center}
+.mobility-info:focus-visible{outline:3px solid #167f79;outline-offset:2px}
+
+/* V5.11 — optional daily mobility and independent progress */
+.daily-mobility{border:1px solid #d4e8e1}
+.mobility-status{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 8px;font-size:12px}
+.mobility-status span{color:#58716d}
+.mobility-progress{height:7px;border-radius:99px;background:#e5efeb;overflow:hidden;margin-bottom:12px}
+.mobility-progress div{height:100%;background:#16856e;border-radius:99px;transition:width .2s}
+.mobility-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}
+.mobility-summary>div{background:#f0f7f4;border-radius:12px;padding:12px}
+.mobility-summary strong{display:block;font-size:25px;color:#18745f}
+.mobility-summary small{display:block;color:#5a6e68;font-size:11px;margin-top:3px}
+.mobility-week-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.mobility-day{text-align:center;font-size:10px;color:#64716c}
+.mobility-day b{display:grid;place-items:center;margin-top:5px;height:32px;border-radius:7px;background:#eff1f1;color:#a2aba7;font-size:16px}
+.mobility-day b.mobility-done{background:#d9f3e7;color:#157455}
+.mobility-bars{height:125px;margin-top:12px}
