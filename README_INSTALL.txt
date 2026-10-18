@@ -1,12 +1,11 @@
-WINTER STRONG V5.14 — REST TIMER REFINEMENT
+Winter Strong V5.15 — Exercise detail navigation update
 
-REQUIRES: V5.13 (and prior V5.11 / V5.12) already installed.
+Requires V5.14 already installed.
 
-1. Export your workout data in Settings before updating.
-2. Upload app.js, styles.css and sw.js into the ROOT of the existing GitHub repository.
-3. Commit; do not delete or replace library.js, program.js, exercise-images or icons.
-4. Wait for GitHub Pages to publish. Reload the app; a Home Screen app may need to be fully closed/reopened.
-5. Test timer in Monday: 30s, 1m, 2m, 3m, custom seconds (10–900), manual Start, X Stop & Reset, silent/beep, collapsed/expanded and scrolling.
+1. Back up workout data via Settings.
+2. Upload app.js and sw.js to the repository ROOT (replacing existing files).
+3. Commit and reload after GitHub Pages publishes.
 
-NOTE: Beep is best-effort when the app is active and iOS allows audio. It is not a background alarm. No auto-start or repeating alarm.
-No changes to workout persistence, program or mobility library.
+When exercise detail opens from a workout: top-left Return to Workout, bottom All Exercises. From Visuals: top-left All Exercises. Existing return-to-exact-scroll logic stays intact.
+
+Image corrections NOT included. Reported issues: Easy seated breathing, Supported chest opener, Cross-body shoulder stretch, 90/90 hip switches. Do not use problematic images as authoritative exercise technique.
