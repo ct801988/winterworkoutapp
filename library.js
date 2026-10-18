@@ -776,12 +776,13 @@ window.WINTER_EXERCISE_LIBRARY = [
     "symbol": "↔",
     "steps": [
       "Hold a stable support and lift one knee in front.",
-      "Slowly sweep the knee out to the side, rotate through a comfortable arc, and return.",
-      "Reverse the path while keeping your pelvis as still as possible."
+      "Open the hip out to the side, then slowly rotate the leg behind you through a comfortable arc.",
+      "Return to standing with control while keeping your pelvis as still as possible."
     ],
     "tip": "Use a small controlled range; avoid lumbar twisting or hip pinching.",
     "swap": "Supported standing hip circles.",
-    "images": ["exercise-images/mob-00-start.png", "exercise-images/mob-00-middle.png", "exercise-images/mob-00-finish.png"]
+    "imageCaptions": ["1 · Start / front", "2 · Open / side", "3 · Sweep / back", "4 · Return / finish"],
+    "images": ["exercise-images/mob-00-start.png", "exercise-images/mob-00-middle.png", "exercise-images/mob-00-finish.png", "exercise-images/mob-00-return.png"]
   },
   {
     "name": "Adductor rock-backs",
